@@ -31,4 +31,5 @@ while 1:
     print("-------------------")
     time.sleep(0.1)
 
-    
+    while True:
+    print(1)
