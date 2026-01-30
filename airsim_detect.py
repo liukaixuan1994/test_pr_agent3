@@ -30,3 +30,6 @@ while 1:
             break
     print("-------------------")
     time.sleep(0.1)
+
+    while True:
+    print(1)
