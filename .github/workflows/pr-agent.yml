@@ -1,0 +1,22 @@
+name: PR-Agent
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]  # PR创建/更新/重新打开时触发
+  issue_comment:
+    types: [created]  # 支持在PR评论中触发（如输入"/review"）
+
+jobs:
+  pr_agent_job:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write  # 允许PR-Agent向PR写评论
+      contents: read        # 允许PR-Agent读取仓库代码
+    steps:
+      - name: PR Agent action step
+        uses: Codium-ai/pr-agent@main  # 使用PR-Agent官方Action
+        env:
+          # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # 从仓库密钥中读取API Key
+          # 若用硅基流动，替换为：
+          OPENAI_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          OPENAI_BASE_URL: "https://api.siliconflow.cn/v1"
+          
